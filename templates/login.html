@@ -14,10 +14,10 @@
     <div class="card shadow-sm border-0 mb-4" style="padding: 100px">
         <div class="card-body">
             <h5 style="padding: 30px">BSVida - Banco de Sangue
-                <img src="C:\Users\ricka\Desktop\app-bs\static\imgs\3738805.png" alt="" 
+                <img src="https://raw.githubusercontent.com/ricrett/app-bs/refs/heads/main/static/imgs/3738805.png" alt="" 
                 style="max-width: 75px; padding: 20px;">
             </h5>
-            <form action="{{ url_for('dashboard') }}" method="POST">
+            <form action="{{ url_for('login') }}" method="POST">
 
                 <label for="login" class="form-label fw-semibold">
                     CPF  
@@ -33,7 +33,7 @@
         </div> 
 
         <div class="d-grid gap-2 d-md-flex justify-content-md-center" style="padding: 30px;">
-            <a href="#" class="btn btn-outline-secondary">Entrar</a>
+            <a href="{{ url_for('dashboard') }}" class="btn btn-outline-secondary">Entrar</a>
             <a href="#" class="btn btn-outline-secondary">Cadastrar</a>
             <a href="#" class="btn btn-outline-secondary">Recuperar Senha</a>
         </div>

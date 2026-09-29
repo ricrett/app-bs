@@ -1,19 +1,24 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from datetime import datetime
 
 app = Flask(__name__)
 
 @app.route('/')
+@app.route('/login')
 def login ():
-    return render_template('login.html')
+    return render_template ('login.html')
+
+@app.route('/dashboard')
+def dashboard ():
+    return render_template ('dashboard.html')
 
 @app.route('/cadastro')
 def cadastro ():
-    return render_template('cadastro.html')
+    return render_template ('cadastro.html')
 
 @app.route('/listagem')
 def listagem ():
-    return render_template('listagem.html')
+    return render_template ('listagem.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

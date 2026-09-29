@@ -13,7 +13,9 @@
 <body>
     <nav class="navbar shadow-sm" style="justify-content: space-between;">
         <div class="container">
-            <a class="navbar-brand" href="#">BSVida - Banco de Sangue</a>
+            <img src="https://raw.githubusercontent.com/ricrett/app-bs/refs/heads/main/static/imgs/3738805.png" alt="" 
+                style="max-width: 75px; padding: 20px;">
+            <a class="navbar-brand" href="{{ url_for ('dashboard') }}">BSVida - Banco de Sangue</a>
         
             <button class="navbar-toggler" type="button"
             data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -23,27 +25,27 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/">Listagem de Usuários</a>
-                        <a class="nav-link active" href="/">Cadastro de Usuários</a>
+                        <a class="nav-link active" href="{{ url_for ('listagem') }}">Listagem de Usuários</a>
+                        <a class="nav-link active" href="{{ url_for ('cadastro') }}">Cadastro de Usuários</a>
                     </li>
                 </ul>
             </div>
 
             <input class="form-control" type="text" nome="txt-pesquisa" 
             placeholder="Pesquisar" style="max-width: 200px;">
-            <a href="#" class="btn btn-outline-secondary">Sair</a>
+            <a href="{{ url_for ('login') }}" class="btn btn-outline-secondary">Sair</a>
         </div>
         
     </nav>
 
     <main class="navbar shadow-sm" style="justify-content: center; padding: 90px">
         {% block conteudo%}
-        <img src="C:\Users\ricka\Desktop\app-bs\static\imgs\3738805.png" alt="" 
-        style="max-width: 400px; padding: 100px;">
+        <img src="https://raw.githubusercontent.com/ricrett/app-bs/refs/heads/main/static/imgs/3738805.png" alt="" 
+        style="max-width: 370px; padding: 100px;">
         {% endblock %}
     </main>
 
-    <footer class="navbar shadow-sm" style="justify-content: space-around; padding: 20px">
+    <footer class="navbar shadow-sm" style="justify-content: space-around; padding: 20px;">
         Projeto desenvolvido por Ricardo Gonçalves Santos Rett
     </footer>
 
