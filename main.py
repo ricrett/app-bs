@@ -30,7 +30,7 @@ def login ():
         if login == "12345678900" and senha == "12345":
             return redirect(url_for('dashboard'))
         else:
-            flash(f'Usuário ou senha inválidos!')
+            flash(f"Usuário ou senha incorretos!")
             return render_template('login.html')
         
     return render_template('login.html')           
@@ -90,15 +90,15 @@ def cadastro ():
         if not doacao:
             erros.append('É necessário informar a última doação')
         if not fator:
-            erros.append('É necessário inserir a senha')
+            erros.append('É necessário informar o fator')
         if not tsanguineo:
-            erros.append('É necessário inserir a senha')
+            erros.append('É necessário informar o tipo sanguíneo')
         if not doenca:
-            erros.append('É necessário inserir a senha')
+            erros.append('É necessário informar doença ou não')
         if not cirurgia:
-            erros.append('É necessário inserir a senha')
+            erros.append('É necessário informar se fez cirurgias')
         if not estetico:
-            erros.append('É necessário inserir a senha')
+            erros.append('É necessário informar se fez procedimentos')
 
         if erros:
             for erro in erros:
@@ -113,9 +113,10 @@ def cadastro ():
         flash(f'Cadastro realizado com sucesso! Consulte no menu Listagem.') 
     return render_template ('cadastro.html')
 
-@app.route('/listagem')
+@app.route('/listagem', methods=['GET', 'POST'])
 def listagem ():
-    return render_template ('listagem.html')
+   
+  return render_template('listagem.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

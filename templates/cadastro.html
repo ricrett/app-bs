@@ -180,10 +180,20 @@
             </fieldset>
 
             <div class="d-grid gap-2 d-md-flex justify-content-md-center" style="padding: 30px; margin: 10px auto;">
-                <button type="submit" class="btn btn-outline-secondary">Salvar</a>
-                <button type="reset" class="btn btn-outline-secondary">Limpar</a>
-                <a href="{{ url_for ('dashboard') }}" class="btn btn-outline-secondary">Voltar</a>
+                <button type="submit" class="btn btn-outline-secondary">Salvar</button>
+                <button type="reset" class="btn btn-outline-secondary">Limpar</button>
+                <button href="{{ url_for ('dashboard') }}" class="btn btn-outline-secondary">Voltar</button>
             </div>
         </form>
+
+        {% if erros %}
+            <div class="mb-4">
+                {% for erro in erros %}
+                    <div class="alert alert-danger">
+                        {{ erro }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
     </div>    
 {% endblock %}

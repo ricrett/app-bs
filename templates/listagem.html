@@ -10,8 +10,8 @@
                 <a href="{{ url_for('cadastro') }}" class="btn btn-outline-secondary">Adicionar</a>
             </h5>
         </div> 
-        
-        <table class="table">
+     
+         <table class="table">
             <thead>
                 <tr>
                     <th scope="col">ID</th>
@@ -22,23 +22,25 @@
                     <th scope="col">Ações</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Eu</td>
-                    <td>eu@fatec.com.br</td>
-                    <td>999999999</td>
-                    <td>Administrador</td>
-                    <td>              
-                        <div>
-                            <a href="{{ url_for ('cadastro') }}" class="btn btn-outline-secondary">Editar</a>
-                            <a href="#" class="btn btn-outline-secondary">Excluir</a>
-                        </div>
-                    </td>
-                </tr>
-  
-            </tbody>
+            <form action="{{ url_for('listagem') }}" method="get">
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>{{ nome }}</td>
+                        <td>{{ email }}</td>
+                        <td>{{ celular }}</td>
+                        <td>{{ acesso }}</td>
+                        <td>              
+                            <div>
+                                <a href="#" class="btn btn-outline-secondary">Editar</a>
+                                <a href="#" class="btn btn-outline-secondary">Excluir</a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </form>
         </table>
+        
 
 
 {% endblock %}

@@ -35,6 +35,16 @@
                     <a href="#" class="btn btn-outline-secondary">Recuperar Senha</a>
                 </div>
             </form>
+
+            {% if erros %}
+                <div class="mb-4">
+                    {% for erro in erros %}
+                        <div class="alert alert-danger">
+                            {{ erro }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div> 
     </div>   
 </body>
