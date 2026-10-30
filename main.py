@@ -59,20 +59,6 @@ def cadastro ():
         cidade = request.form.get('cidade', '').strip()
         estado = request.form.get('estado', '').strip()
 
-        #Tabela 2: histórico de doações.
-        
-        doacao = request.form.get('doacao', '').strip()
-        local = request.form.get('local', '').strip()
-        fator = request.form.get('fator', '').strip()
-        tsanguineo = request.form.get('tsanguineo', '').strip()
-
-        #Tabela 3: histórico médico.
-
-        doenca = request.form.get('doenca', '').strip()
-        cirurgia = request.form.get('cirurgia', '').strip()
-        estetico = request.form.get('estetico', '').strip()
-        sexo = request.form.get('sexo', '').strip()
-
         erros = []
 
         if not nome:
@@ -87,18 +73,6 @@ def cadastro ():
             erros.append('É necessário inserir a data de nascimento')
         if not acesso:
             erros.append('É necessário definir o nível de acesso')
-        if not doacao:
-            erros.append('É necessário informar a última doação')
-        if not fator:
-            erros.append('É necessário informar o fator')
-        if not tsanguineo:
-            erros.append('É necessário informar o tipo sanguíneo')
-        if not doenca:
-            erros.append('É necessário informar doença ou não')
-        if not cirurgia:
-            erros.append('É necessário informar se fez cirurgias')
-        if not estetico:
-            erros.append('É necessário informar se fez procedimentos')
 
         if erros:
             for erro in erros:
@@ -107,16 +81,85 @@ def cadastro ():
                                         nome=nome, email=email, celular=celular, nasc=nasc, cpf=cpf,
                                         acesso=acesso, cep=cep, endereco=endereco, numero=numero,
                                         complemento=complemento, cidade=cidade, estado=estado,
-                                        doacao=doacao, local=local, fator=fator, tsanguineo=tsanguineo,
-                                        doenca=doenca, cirurgia=cirurgia, estetico=estetico, sexo=sexo
                                         )
         flash(f'Cadastro realizado com sucesso! Consulte no menu Listagem.') 
     return render_template ('cadastro.html')
 
-@app.route('/listagem', methods=['GET', 'POST'])
-def listagem ():
+@app.route('/histdoacoes', methods=['GET', 'POST'])
+def histdoacoes ():
+
+    if request.method == 'POST':
+        doacao = request.form.get('doacao', '').strip()
+        local = request.form.get('local', '').strip()
+        fator = request.form.get('fator', '').strip()
+        tsanguineo = request.form.get('tsanguineo', '').strip()
+
+        erros = []
+
+        if not doacao:
+            erros.append('É necessário informar a última doação')
+        if not fator:
+            erros.append('É necessário informar o fator')
+        if not tsanguineo:
+            erros.append('É necessário informar o tipo sanguíneo')
+
+        if erros:
+            for erro in erros:
+                flash(erro, 'danger')
+                return render_template ('histdoacoes.html', 
+                                        doacao=doacao, local=local, fator=fator, tsanguineo=tsanguineo
+                                        )
+        flash(f'Cadastro realizado com sucesso! Consulte no menu Listagem.')
    
-  return render_template('listagem.html')
+    return render_template('histdoacoes.html')
+
+@app.route('/histmedico', methods=['GET', 'POST'])
+def histmedico ():
+
+    if request.method == 'POST':
+        doenca = request.form.get('doenca', '').strip()
+        cirurgia = request.form.get('cirurgia', '').strip()
+        estetico = request.form.get('estetico', '').strip()
+        sexo = request.form.get('sexo', '').strip()
+
+        erros = []
+
+        if not doenca:
+            erros.append('É necessário informar doença ou não')
+        if not cirurgia:
+            erros.append('É necessário informar se fez cirurgias')
+        if not estetico:
+            erros.append('É necessário informar se fez procedimentos')
+        
+        if erros:
+            for erro in erros:
+                flash(erro, 'danger')
+                return render_template ('histmedico.html', 
+                                        doenca=doenca, cirurgia=cirurgia, estetico=estetico, sexo=sexo
+                                        )
+        flash(f'Cadastro realizado com sucesso! Consulte no menu Listagem.')
+   
+    return render_template('usuarios/histmedico.html')
+
+@app.route('/usuarios/listar', methods=['GET', 'POST'])
+def listar_usuarios ():
+   
+  return render_template('usuarios/listagem.html')
+
+@app.route('/usuarios/inserir', methods=['GET', 'POST'])
+def inserir_usuarios ():
+   
+  return render_template('usuarios/listagem.html')
+
+@app.route('/usuarios/listar', methods=['GET', 'POST'])
+def listar_doadores ():
+   
+  return render_template('usuarios/listagem.html')
+
+@app.route('/usuarios/listar', methods=['GET', 'POST'])
+def inserir_doadores ():
+   
+  return render_template('usuarios/listagem.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

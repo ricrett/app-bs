@@ -1,0 +1,44 @@
+{% extends 'layouts/base_menu.html' %}
+
+{% block titulo %}BSVida - Lista de Usuários{% endblock %}
+
+{% block conteudo %}
+
+        <div class="navbar-brand" style="justify-content: space-evenly">
+            <h5 style="padding: 10px;">Listagem de Usuários
+                <a href="{{ url_for('cadastro') }}" class="btn btn-outline-secondary">Adicionar</a>
+            </h5>
+        </div> 
+     
+         <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Celular</th>
+                    <th scope="col">Nível</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <form action="{{ url_for('listagem') }}" method="get">
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>{{ nome }}</td>
+                        <td>{{ email }}</td>
+                        <td>{{ celular }}</td>
+                        <td>{{ acesso }}</td>
+                        <td>              
+                            <div>
+                                <a href="#" class="btn btn-outline-secondary">Editar</a>
+                                <a href="#" class="btn btn-outline-secondary">Excluir</a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </form>
+        </table>
+        
+
+{% endblock %}
