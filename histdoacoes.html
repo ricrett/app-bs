@@ -1,0 +1,56 @@
+{% extends 'layouts/base_menu.html' %}
+
+{% block titulo %}BSVida - Doações{% endblock %}
+
+{% block conteudo %}
+
+        <form action="{{ url_for ('cadastro') }}" method="POST">
+            <fieldset class="row g-3">
+                <h3>Histórico de Doações</h3>
+
+                <div class="col-md-6">
+                    <label for="doacao" class="form-label fw-semibold">
+                        Última doação
+                    </label>
+                    <input class="form-control" type="date" id="doacao" name="doacao" required>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="local" class="form-label fw-semibold">
+                        Local
+                    </label>
+                    <input class="form-control" type="text" id="local "name="local" required>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="fator" class="form-label fw-semibold">
+                        Fator RH
+                    </label>
+                    <select name="fator" id="fator" class="form-control">
+                        <option value="null">(ESCOLHA)</option>
+                        <option value="Sim">Positivo (+)</option>
+                        <option value="Não">Negativo (-)</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="tsanguineo" class="form-label fw-semibold">
+                        Tipo sanguíneo
+                    </label>
+                    <select name="tsanguineo" id="tsanguineo" class="form-control">
+                        <option value="null">(ESCOLHA)</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="AB">AB</option>
+                        <option value="O">O</option>
+                    </select>
+                </div>
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-center" style="padding: 30px; margin: 10px auto;">
+                <button type="submit" class="btn btn-outline-secondary">Salvar</button>
+                <button type="reset" class="btn btn-outline-secondary">Limpar</button>
+                <button href="{{ url_for ('dashboard') }}" class="btn btn-outline-secondary">Voltar</button>
+            </div>
+            </fieldset>
+        </form>
+{% endblock %}

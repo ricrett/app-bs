@@ -1,0 +1,39 @@
+{% extends 'layouts/base_menu.html' %}
+{% block titulo %} TELA DE LOGIN {% endblock %}
+
+{% block conteudo %}
+        <div class="card-body">
+            <h5 style="padding: 30px">BSVida - Banco de Sangue
+                <img src="https://raw.githubusercontent.com/ricrett/app-bs/refs/heads/main/static/imgs/3738805.png" alt="" 
+                style="max-width: 75px; padding: 20px;">
+            </h5>
+            <form action="{{ url_for('login')}}" method="POST">
+
+                <label for="login" class="form-label fw-semibold">
+                    CPF  
+                </label>
+                <input class="form-control" type="text" id="login" name="login" placeholder="Somente números" required>
+
+                <label for="senha" class="form-label fw-semibold">
+                    Senha
+                </label>
+                <input class="form-control" type="text" id="senha" name="senha" required>
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-center" style="padding: 30px;">
+                    <button type="submit" class="btn btn-outline-secondary">Entrar</button>
+                    <button type="reset" class="btn btn-outline-secondary">Cadastrar</button>
+                    <a href="#" class="btn btn-outline-secondary">Recuperar Senha</a>
+                </div>
+            </form>
+
+            {% if erros %}
+                <div class="mb-4">
+                    {% for erro in erros %}
+                        <div class="alert alert-danger">
+                            {{ erro }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div> 
+{% endblock %}

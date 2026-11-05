@@ -1,0 +1,48 @@
+{% extends 'layouts/base_menu.html' %}
+
+{% block titulo %}BSVida - Histórico Médico{% endblock %}
+
+{% block conteudo %}        
+        <form action="{{ url_for ('cadastro') }}" method="POST">
+            <fieldset class="row g-3">                
+                <h3>Histórico Médico</h3>
+
+                <div class="col-md-6">
+                    <label for="doenca" class="form-label fw-semibold">
+                        Possui alguma doença
+                    </label>
+                    <input class="form-control" type="text" id="doenca" name="doenca" required>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="cirurgia" class="form-label fw-semibold">
+                        Realizou procedimento cirúrgico
+                    </label>
+                    <input class="form-control" type="text" id="cirurgia" name="cirurgia" required>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="estetico" class="form-label fw-semibold">
+                        Realizou procedimento estético
+                    </label>
+                    <input class="form-control" type="text" id="estetico" name="estetico" required>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="sexo" class="form-label fw-semibold">
+                        Sexo
+                    </label>
+                    <select name="sexo" id="sexo" class="form-control">
+                        <option value="null">(ESCOLHA)</option>
+                        <option value="Feminino">Feminino</option>
+                        <option value="Masculino">Masculino</option>
+                    </select>
+                </div>
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-center" style="padding: 30px; margin: 10px auto;">
+                <button type="submit" class="btn btn-outline-secondary">Salvar</button>
+                <button type="reset" class="btn btn-outline-secondary">Limpar</button>
+                <button href="{{ url_for ('dashboard') }}" class="btn btn-outline-secondary">Voltar</button>
+            </fieldset>
+        </form>
+{% endblock %}
