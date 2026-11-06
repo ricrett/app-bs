@@ -1,7 +1,18 @@
-from flask import Flask, render_template, request, url_for, redirect, flash
-from datetime import datetime
+import os
+
+from dotenv import load_dotenv
+from flask import Flask, redirect, render_template, url_for
+from flask_wtf.csrf import CSRFProtect
+
+from db import execute_one
+
+load_dotenv()
 
 app = Flask(__name__)
+app.secret_key = os.getenv('SECRET_KEY')
+
+# Liga a proteção CSRF: todo formulário POST do sistema vai precisar do token
+CSRFProtect(app)
 app.secret_key = 'fatec-jahu-2026'
 
 
@@ -160,6 +171,15 @@ def listar_doadores ():
 def inserir_doadores ():
    
   return render_template('usuarios/listagem.html')
+
+@app.errorhandler(404)
+def pagina_nao_encontrada(erro):
+    return render_template('404.html'), 404
+
+
+@app.errorhandler(500)
+def erro_no_servidor(erro):
+    return render_template('500.html'), 500
 
 if __name__ == '__main__':
     app.run(debug=True)
